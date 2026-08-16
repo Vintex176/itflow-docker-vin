@@ -31,23 +31,23 @@ services:
       - wan
       - itflow-db
     ports:
-      - "80:8080"
+      - "9080:8082"
     environment:
       - TZ=$TZ
       - ITFLOW_NAME=ITFlow
-      - ITFLOW_URL=it.$ROOT_DOMAIN
-      - ITFLOW_PORT=8080
+      - ITFLOW_URL=helpdesk.venvietech.co.ke
+      - ITFLOW_PORT=8082
       - ITFLOW_REPO=github.com/itflow-org/itflow
       - ITFLOW_REPO_BRANCH=master
       - ITFLOW_LOG_LEVEL=info
-      - ITFLOW_DB_HOST=itflow-db
-      - ITFLOW_DB_PASS=$ITFLOW_DB_PASS
+      - ITFLOW_DB_HOST=itflow
+      - ITFLOW_DB_PASS=Trexzen@1
     volumes:
       - ./itflow/:/var/www/html
 
   itflow-db:
-    hostname: itflow-db
-    container_name: itflow-db
+    hostname: itflow
+    container_name: itflow
     image: mariadb:10.6.11
     restart: always
     networks:
@@ -56,6 +56,6 @@ services:
       - MARIADB_RANDOM_ROOT_PASSWORD=true
       - MARIADB_DATABASE=itflow
       - MARIADB_USER=itflow
-      - MARIADB_PASSWORD=$ITFLOW_DB_PASS
+      - MARIADB_PASSWORD=Trexzen@1
     volumes:
       - itflow-db:/var/lib/mysql/    
