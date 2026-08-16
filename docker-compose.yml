@@ -38,17 +38,17 @@ services:
     environment:
       - TZ=$TZ
       - ITFLOW_NAME=ITFlow
-      - ITFLOW_URL=$ROOT_DOMAIN
-      - ITFLOW_PORT=8080
+      - ITFLOW_URL=helpdesk.venvietech.co.ke
+      - ITFLOW_PORT=9080
       - ITFLOW_REPO=github.com/itflow-org/itflow
       - ITFLOW_REPO_BRANCH=master
       - ITFLOW_LOG_LEVEL=info
-      - ITFLOW_DB_HOST=itflow-db
-      - ITFLOW_DB_PASS=$ITFLOW_DB_PASS
+      - ITFLOW_DB_HOST=itflow
+      - ITFLOW_DB_PASS=Trexzen@1
     volumes:
       - itflow-data:/var/www/localhost/htdocs
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      test: ["CMD", "curl", "-f", "http://localhost:9080"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -65,7 +65,7 @@ services:
       - MARIADB_RANDOM_ROOT_PASSWORD=true
       - MARIADB_DATABASE=itflow
       - MARIADB_USER=itflow
-      - MARIADB_PASSWORD=$ITFLOW_DB_PASS
+      - MARIADB_PASSWORD=Trexzen@1
     volumes:
       - itflow-db:/var/lib/mysql/    
     healthcheck:
