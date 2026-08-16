@@ -34,7 +34,7 @@ services:
       - wan
       - itflow-db
     ports:
-      - "8080:8080"
+      - "9080:8082"
     environment:
       - TZ=$TZ
       - ITFLOW_NAME=ITFlow
@@ -55,8 +55,8 @@ services:
       start_period: 40s      
 
   itflow-db:
-    hostname: itflow-db
-    container_name: itflow-db
+    hostname: itflow
+    container_name: itflow
     image: mariadb:10.11.6
     restart: unless-stopped
     networks:
@@ -88,7 +88,7 @@ services:
         environment:
           - MYSQL_DATABASE=itflow
           - MYSQL_USER=itflow
-          - MARIADB_PASSWORD=$ITFLOW_DB_PASS
+          - MARIADB_PASSWORD=Trexzen@1
           - TZ=$TZ
           - MYSQL_HOST=itflow-db
           - MAX_BACKUPS=3 #change to your liking
